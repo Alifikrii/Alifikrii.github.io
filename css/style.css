@@ -127,4 +127,18 @@ nav{
     grid-auto-columns: 100px;
     justify-content: center;
     }
+
+    .foto{
+        position: absolute;
+        height: 400px;
+        top: 45%;
+        left: 60%;
+
+    }
+    .text-container {
+        position: absolute;
+        left: 15%;
+        top: 10%;
+        transform: translate3d();
+    }
   }
