@@ -113,7 +113,7 @@ nav{
     color: rgba(255, 0, 0, 0);
 }
 
-@media only screen and (max-width:500px) {
+@media only screen and (max-width:700px) {
     /* For mobile phones: */
     .sosmed-container{
         width: 90%;
