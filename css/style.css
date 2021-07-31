@@ -1,0 +1,112 @@
+@charset "utf-8";
+
+body{
+   background-color:rgb(255, 255, 255);
+   margin: 0px;
+   padding: 0px;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+section{
+    width: 100%;
+    height: 95vh ;
+    background-image: url("../gambar/solidBG.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    height: 60px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0,0.2);
+    padding: 0px 5%;
+    font-family: 'Merienda', cursive;
+    font-size: 40px;
+}
+
+.text-container p:nth-child(1){
+    font-family: 'Merienda';
+    font-size: 25px;
+    margin-bottom: 0px;
+}
+
+.text-container p:nth-child(2){
+    font-family: calibri;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #1a1a1a;
+    font-size: 80px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.text-container p:nth-child(3){
+    font-family: roboto;
+    letter-spacing: 1px;
+    color: #403e3e;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.text-container {
+    position: absolute;
+    left: 15%;
+    top: 30%;
+    transform: translate3d();
+}
+
+.foto{
+    position: absolute;
+    height: 570px;
+    top: 15%;
+    left: 55%;
+    transform: translateX(-70%);
+    filter: drop-shadow(100px 30px 10px rgba(34, 34, 34, 0.158));
+    
+}
+
+.sosmed-container{
+    width: 70%;
+    height: 200px;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 12px rgba(0, 0, 0,0.2);
+    position: relative;
+    display: flex;
+    margin: -9% auto 20px auto;
+}
+.icon-sosmed{
+    display: flex;
+
+    margin: auto;
+}
+.icon-sosmed a{
+    border-radius: 20%;
+    background-color: rgb(214, 213, 213);
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 10px;
+}
+
+.icon-sosmed a:hover{
+    background-color: #0000;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0,0.2);
+    transition: all ease 0.1ms;
+}
+.icon-sosmed a:hover i{
+    transition: all ease 0.1ms;
+    color: rgba(255, 0, 0, 0);
+}
