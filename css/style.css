@@ -104,9 +104,27 @@ nav{
 .icon-sosmed a:hover{
     background-color: #0000;
     box-shadow: 2px 2px 12px rgba(0, 0, 0,0.2);
-    transition: all ease 0.1ms;
+    transition: all ease 0s;
+    transition-delay: 0s;
 }
 .icon-sosmed a:hover i{
-    transition: all ease 0.1ms;
+    transition: all ease 0s;
+    transition-delay: 0s;
     color: rgba(255, 0, 0, 0);
 }
+
+@media only screen and (max-width:500px) {
+    /* For mobile phones: */
+    .sosmed-container{
+        width: 90%;
+        height: 350px;
+    }
+    .icon-sosmed{
+    display: grid;
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    grid-auto-flow: column;
+    grid-auto-columns: 100px;
+    justify-content: center;
+    }
+  }
