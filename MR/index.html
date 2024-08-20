@@ -3,21 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Data by PN and Tanggal Lahir</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Data Pencarian</title>
+    <link rel="stylesheet" href="styles.css"> <!-- CSS Terpisah -->
 </head>
 <body>
-    <div id="searchForm">
-        <h1>Search Data</h1>
-        <form>
-            <label for="pn">PN (Personal Number):</label>
-            <input type="text" id="pn" name="pn" required><br><br>
-            <label for="dob">6 Digit Tanggal Lahir (hhbbtt): cth: 210501</label>
-            <input type="text" id="dob" name="dob" required><br><br>
-            <button type="submit">Search</button>
+    <header>
+        <div class="logo-container">
+            <img src="LogoLSPBorder.png" alt="Logo" class="logo"> <!-- Ganti path-to-your-logo.png dengan path logo Anda -->
+            <h1>Kelengkapan Berkas MR</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <form id="searchForm">
+            <div class="form-group">
+                <label for="pn">PN (Personal Number):</label>
+                <input type="text" id="pn" required placeholder="cth: 43741">
+            </div>
+            <div class="form-group">
+                <label for="dob">Masukkan 6 Digit Tanggal Lahir (DDMMYY) : </label>
+                <input type="text" id="dob" maxlength="6" required placeholder="cth: 210571">
+            </div>
+            <button type="submit">Cari</button>
         </form>
+        <div id="result"></div>
     </div>
-    <div id="result"></div>
+
     <script src="script.js"></script>
 </body>
 </html>
