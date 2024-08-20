@@ -46,11 +46,22 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
                 console.log(rowDate === dobInput);
 
                 if (rowDate === dobInput) {
-                    // Jika TTL sesuai, tampilkan hasil
+                    //  Jika TTL sesuai, tampilkan hasil
                     const resultTable = document.createElement('table');
                     resultTable.border = '1';
 
+                    const nameRow = document.createElement('tr');
+                    const nameHeader = document.createElement('td');
+                    nameHeader.className = 'header-cell';
+                    nameHeader.textContent = 'Nama Peserta';
+                    const nameData = document.createElement('td');
+                    nameData.textContent = matchingRow[headers.indexOf('Nama')] || 'Nama Tidak Diketahui';
+                    nameRow.appendChild(nameHeader);
+                    nameRow.appendChild(nameData);
+                    resultTable.appendChild(nameRow);
+
                     const relevantHeaders = ['KTP', 'CV', 'SK JABATAN', 'PAS FOTO', 'DUJ', 'Struktur Organisasi', 'APL 01', 'APL 02', 'Portofolio', 'Sertifikat MR', 'Sertifikat Refreshment'];
+                    const namaPeserta =['NAMA']
 
                     // Buat baris untuk setiap header dan value
                     relevantHeaders.forEach(header => {
