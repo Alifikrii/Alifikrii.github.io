@@ -67,9 +67,9 @@ nav{
 
 .foto{
     position: absolute;
-    height: 570px;
-    top: 15%;
-    left: 55%;
+    height: 640px;
+    top: 10%;
+    left: 80%;
     transform: translateX(-70%);
     filter: drop-shadow(100px 30px 10px rgba(34, 34, 34, 0.158));
     
