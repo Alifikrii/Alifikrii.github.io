@@ -1,7 +1,7 @@
 // URL Google Spreadsheet yang dipublikasikan
-const spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1gEN-UcYcUYJHFikXIsj144jf_FffxjGv_jl2o56UpUQ/pub?gid=429525846&single=true&output=csv';
-// const spreadsheetUrl1 = 'https://docs.google.com/spreadsheets/d/ID_SPREADSHEET_1/pub?gid=GID1&single=true&output=csv';
-// const spreadsheetUrl2 = 'https://docs.google.com/spreadsheets/d/ID_SPREADSHEET_2/pub?gid=GID2&single=true&output=csv';
+// const spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1gEN-UcYcUYJHFikXIsj144jf_FffxjGv_jl2o56UpUQ/pub?gid=429525846&single=true&output=csv';
+const spreadsheetUrl1 = 'https://docs.google.com/spreadsheets/d/1gEN-UcYcUYJHFikXIsj144jf_FffxjGv_jl2o56UpUQ/pub?gid=429525846&single=true&output=csv';
+const spreadsheetUrl2 = 'https://docs.google.com/spreadsheets/d/1gEN-UcYcUYJHFikXIsj144jf_FffxjGv_jl2o56UpUQ/pub?gid=282941193&single=true&output=csv';
 // const spreadsheetUrl3 = 'https://docs.google.com/spreadsheets/d/ID_SPREADSHEET_3/pub?gid=GID3&single=true&output=csv';
 // const spreadsheetUrl4 = 'https://docs.google.com/spreadsheets/d/ID_SPREADSHEET_4/pub?gid=GID4&single=true&output=csv';
 
@@ -21,47 +21,53 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
     //     return `${day.padStart(2, '0')}${month.padStart(2, '0')}${shortYear}`; // Format DDMMYY
     // }
 
-    fetch(spreadsheetUrl)
-        .then(response => response.text())
-        .then(csvText => {
-            const rows = csvText.trim().split('\n').map(row => row.split(','));
-            const headers = rows[0] || [];
+    // fetch(spreadsheetUrl)
+    //     .then(response => response.text())
+    //     .then(csvText => {
+    //         const rows = csvText.trim().split('\n').map(row => row.split(','));
+    //         const headers = rows[0] || [];
+    //         const resultDiv = document.getElementById('result');
+    //         resultDiv.innerHTML = '';
+
+    //         console.log('Headers:', headers); // Log nama-nama kolom
+    //         console.log('Data Rows:', rows); // Log semua baris data
+        Promise.all([
+            fetch(spreadsheetUrl1).then(response => response.text()),
+            fetch(spreadsheetUrl2).then(response => response.text())
+            // fetch(spreadsheetUrl3).then(response => response.text()),
+            // fetch(spreadsheetUrl4).then(response => response.text())
+        ])
+        .then(([csvText1, csvText2]) => {
+        // .then(([csvText1, csvText2, csvText3, csvText4]) => {
+            // Proses CSV dari keempat spreadsheet
+            const rows1 = csvText1.trim().split('\n').map(row => row.split(','));
+            const rows2 = csvText2.trim().split('\n').map(row => row.split(','));
+            // const rows3 = csvText3.trim().split('\n').map(row => row.split(','));
+            // const rows4 = csvText4.trim().split('\n').map(row => row.split(','));
+    
+            // Gabungkan semua baris data dari keempat spreadsheet
+            const headers = rows1[0]; // Asumsi keempat spreadsheet memiliki header yang sama
+            const allRows = rows1.slice(1).concat(rows2.slice(1));
+            // const allRows = rows1.slice(1).concat(rows2.slice(1), rows3.slice(1), rows4.slice(1));
+    
             const resultDiv = document.getElementById('result');
             resultDiv.innerHTML = '';
 
-            console.log('Headers:', headers); // Log nama-nama kolom
-            console.log('Data Rows:', rows); // Log semua baris data
-        // Promise.all([
-        //     fetch(spreadsheetUrl1).then(response => response.text()),
-        //     fetch(spreadsheetUrl2).then(response => response.text()),
-        //     fetch(spreadsheetUrl3).then(response => response.text()),
-        //     fetch(spreadsheetUrl4).then(response => response.text())
-        // ])
-        // .then(([csvText1, csvText2, csvText3, csvText4]) => {
-        //     // Proses CSV dari keempat spreadsheet
-        //     const rows1 = csvText1.trim().split('\n').map(row => row.split(','));
-        //     const rows2 = csvText2.trim().split('\n').map(row => row.split(','));
-        //     const rows3 = csvText3.trim().split('\n').map(row => row.split(','));
-        //     const rows4 = csvText4.trim().split('\n').map(row => row.split(','));
-    
-        //     // Gabungkan semua baris data dari keempat spreadsheet
-        //     const headers = rows1[0]; // Asumsi keempat spreadsheet memiliki header yang sama
-        //     const allRows = rows1.slice(1).concat(rows2.slice(1), rows3.slice(1), rows4.slice(1));
-    
-            // const resultDiv = document.getElementById('result');
-            // resultDiv.innerHTML = '';
 
-
-            if (rows.length <= 1) {
+            // if (rows.length <= 1) {
+            //     resultDiv.textContent = 'Tidak ada data dalam spreadsheet.';
+            //     return;
+            // }
+            if (allRows.length <= 1) {
                 resultDiv.textContent = 'Tidak ada data dalam spreadsheet.';
                 return;
             }
 
             // Cari data berdasarkan PN terlebih dahulu
-            const matchingRow = rows.find(row => row[headers.indexOf('PN')] === pnInput);
+            // const matchingRow = rows.find(row => row[headers.indexOf('PN')] === pnInput);
 
             // Cari data berdasarkan PN terlebih dahulu
-        // const matchingRow = allRows.find(row => row[headers.indexOf('PN')] === pnInput);
+        const matchingRow = allRows.find(row => row[headers.indexOf('PN')] === pnInput);
 
             if (matchingRow) {
                 // Jika PN ditemukan, cek apakah TTL sesuai
