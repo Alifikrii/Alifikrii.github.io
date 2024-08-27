@@ -110,3 +110,34 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+
+ /* Loading animation style */
+ #loading {
+    display: none; /* Tersembunyi secara default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000; /* Warna teks lebih soft */
+    padding: 20px 40px;
+    background-color: rgba(236, 236, 236, 0.8); /* Kotak semi-transparan */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(229, 229, 229, 0.388); /* Bayangan lembut */
+}
+#loading::after {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+    border: 3px solid #666; /* Warna border lebih soft */
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

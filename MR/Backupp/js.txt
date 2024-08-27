@@ -4,22 +4,13 @@ const spreadsheetUrl1 = 'https://docs.google.com/spreadsheets/d/1gEN-UcYcUYJHFik
 const spreadsheetUrl2 = 'https://docs.google.com/spreadsheets/d/1gEN-UcYcUYJHFikXIsj144jf_FffxjGv_jl2o56UpUQ/pub?gid=282941193&single=true&output=csv';
 const spreadsheetUrl3 = 'https://docs.google.com/spreadsheets/d/1gEN-UcYcUYJHFikXIsj144jf_FffxjGv_jl2o56UpUQ/pub?gid=1106138934&single=true&output=csv';
 // const spreadsheetUrl4 = 'https://docs.google.com/spreadsheets/d/ID_SPREADSHEET_4/pub?gid=GID4&single=true&output=csv';
-function isValidURL(string) {
-    try {
-        new URL(string);
-        return true;
-    } catch (_) {
-        return false;  
-    }
-}
 
 document.getElementById('searchForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Mencegah form dari reload halaman
 
     const pnInput = document.getElementById('pn').value.trim();
     const dobInput = document.getElementById('dob').value.trim(); // Input pengguna, format DDMMYY (contoh: 301201)
-    const loadingDiv = document.getElementById('loading');
-    loadingDiv.style.display = 'block'; // Tampilkan animasi loading
+
     // Fungsi untuk mengubah tanggal dari DD/MM/YYYY ke DDMMYY
     // function formatDateToSixDigits(dateStr) {
     //     if (!dateStr || typeof dateStr !== 'string') return '';
@@ -77,16 +68,15 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
 
             // Cari data berdasarkan PN terlebih dahulu
         const matchingRow = allRows.find(row => row[headers.indexOf('PN')] === pnInput);
-            // console.log(matchingRow)
+            console.log(matchingRow)
             if (matchingRow) {
                 // Jika PN ditemukan, cek apakah TTL sesuai
                 const ttlIndex = headers.indexOf('Kunci\r');
                 const rowDate = matchingRow[ttlIndex].trim();
                 
-                // console.log('Formatted DOB Input:', dobInput);
-                // console.log('INDEX Date:', ttlIndex); // Log tanggal dari baris
-                // console.log('Row Date:', rowDate); // Log tanggal dari baris
-                // console.log(rowDate === dobInput);
+                console.log('Formatted DOB Input:', dobInput);
+                console.log('Row Date:', rowDate); // Log tanggal dari baris
+                console.log(rowDate === dobInput);
 
                 if (rowDate === dobInput) {
                     //  Jika TTL sesuai, tampilkan hasil
@@ -106,7 +96,7 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
                     const relevantHeaders = [
                         'KTP', 'CV', 'SK JABATAN', 'PAS FOTO', 'DUJ', 
                         'Struktur Organisasi', 'APL 01', 'APL 02', 'Portofolio', 
-                        'Sertifikat MR', 'Sertifikat Refreshment', 'Ijazah Terakhir'
+                        'Sertifikat MR', 'Sertifikat Refreshment'
                     ];
                     // const namaPeserta =['NAMA']
 
@@ -129,15 +119,15 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
                         const valueIndex = headers.indexOf(header);
                         const value = matchingRow[valueIndex] || ''; // Default to empty string if undefined
                         
-                        if (isValidURL(value)) {
+                        if (value) {
                             const link = document.createElement('a');
                             link.href = value;
                             link.textContent = 'Lihat';
                             link.target = '_blank'; // Buka di tab baru
                             tdValue.appendChild(link);
-                            // console.log(link.href)
+                            console.log(link.href)
                         } else {
-                            tdValue.textContent = value;
+                            tdValue.textContent = 'Tidak Ada Data';
                         }
                         tr.appendChild(tdValue);
 
@@ -177,8 +167,5 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
         .catch(error => {
             console.error('Error fetching data:', error);
             document.getElementById('result').textContent = 'Terjadi kesalahan saat mengambil data.';
-        })
-        .finally(() => {
-            loadingDiv.style.display = 'none'; // Sembunyikan animasi loading setelah selesai
         });
 });
