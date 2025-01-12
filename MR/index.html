@@ -4,32 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Berkas MR</title>
-    <link rel="stylesheet" href="styles.css"> <!-- CSS Terpisah -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="logo-container">
-            <img src="LogoLSPBorder.png" alt="Logo" class="logo"> <!-- Ganti path-to-your-logo.png dengan path logo Anda -->
-            <h1>Kelengkapan Berkas Sertifikasi Manajemen Risiko</h1>
+            <img src="LogoLSPBorder.png" alt="Logo LSP" class="logo">
+            <h1>Cek Jadwal Sertifikasi Manajemen Risiko BRI 2025</h1>
+            <img src="LogoCorpu.png" alt="Logo Corpu" class="logo">
         </div>
     </header>
 
-    <div class="container">
-        <form id="searchForm">
-            <div class="form-group">
-                <label for="pn">PN (Personal Number):</label>
-                <input type="text" id="pn" required placeholder="cth: 43741">
-            </div>
-            <div class="form-group">
-                <label for="dob">Masukkan 6 Digit Tanggal Lahir (DDMMYY) : </label>
-                <input type="text" id="dob" maxlength="6" required placeholder="cth: 210571">
-            </div>
-            <button type="submit">Cari</button>
-        </form>
-        <div id="result"></div>
-    </div>
-    <div id="loading">Loading...</div> <!-- Loading animation element -->
-    <div id="result"></div>
+    <main>
+        <div class="container">
+            <form id="searchForm">
+                <div class="form-group">
+                    <label for="pn">PN (Personal Number):</label>
+                    <input type="text" id="pn" required placeholder="Masukkan PN, cth: 43741">
+                </div>
+                <button type="submit">Cari</button>
+            </form>
+            <div id="loading" class="loading">Memuat...</div>
+            <div id="result"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Manajemen Risiko. Semua hak dilindungi.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
