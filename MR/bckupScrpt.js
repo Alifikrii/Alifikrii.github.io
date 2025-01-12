@@ -1,9 +1,6 @@
 // URL Google Spreadsheet yang dipublikasikan
-// const spreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1gEN-UcYcUYJHFikXIsj144jf_FffxjGv_jl2o56UpUQ/pub?gid=429525846&single=true&output=csv';
-const spreadsheetUrl1 = 'https://docs.google.com/spreadsheets/d/1gEN-UcYcUYJHFikXIsj144jf_FffxjGv_jl2o56UpUQ/pub?gid=429525846&single=true&output=csv';
-const spreadsheetUrl2 = 'https://docs.google.com/spreadsheets/d/1gEN-UcYcUYJHFikXIsj144jf_FffxjGv_jl2o56UpUQ/pub?gid=282941193&single=true&output=csv';
-const spreadsheetUrl3 = 'https://docs.google.com/spreadsheets/d/1gEN-UcYcUYJHFikXIsj144jf_FffxjGv_jl2o56UpUQ/pub?gid=1106138934&single=true&output=csv';
-// const spreadsheetUrl4 = 'https://docs.google.com/spreadsheets/d/ID_SPREADSHEET_4/pub?gid=GID4&single=true&output=csv';
+// const spreadsheetUrl =
+// const spreadsheetUrl1 = // const spreadsheetUrl4 = 'https://docs.google.com/spreadsheets/d/ID_SPREADSHEET_4/pub?gid=GID4&single=true&output=csv';
 function isValidURL(string) {
     try {
         new URL(string);
